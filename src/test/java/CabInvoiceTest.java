@@ -40,7 +40,7 @@ public class CabInvoiceTest {
 
     @Test
     public void givenUserIdAndRides_ShouldReturnInvoiceSummary() {
-        String userId = "abc@b.com";
+        String userId = InvoiceService.getUserID();
         invoiceService.addRides(userId, rides);
         InvoiceSummary summary = invoiceService.getInvoiceSummary(userId);
         InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);

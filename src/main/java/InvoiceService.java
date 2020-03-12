@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class InvoiceService {
     private static final int MIN_FARE = 5;
     private static double MIN_COST_PER_KELOMETER = 10;
@@ -7,6 +9,19 @@ public class InvoiceService {
 
     public InvoiceService() {
        this.rideRepository = new RideRepository();
+    }
+
+    public static String getUserID() {
+        ArrayList userIdList = new ArrayList();
+        String userId = null;
+        userIdList.add("ab@c.com");
+        userIdList.add("test@abc");
+        userIdList.add("test");
+
+        for (int i=0;i<userIdList.size();i++) {
+            userId = (String) userIdList.get(i);
+        }
+        return userId;
     }
 
     public double calculateFare(double distance, int time) {
