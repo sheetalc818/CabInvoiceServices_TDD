@@ -10,8 +10,8 @@ public class CabInvoiceTest {
     @Before
     public void setUp() {
         invoiceService = new InvoiceService();
-        rides = new Ride[]{new Ride(2.0, 5),
-                new Ride(0.1, 1),
+        rides = new Ride[]{new Ride(RideCategories.NORMAL_RIDE,2.0, 5),
+                new Ride(RideCategories.PREMIUM_RIDE,0.1, 1),
         };
     }
 
@@ -19,7 +19,7 @@ public class CabInvoiceTest {
     public void givenDistanceAndTime_ShouldReturnTotalFare() {
         double distance = 2.0;
         int time = 5;
-        double fare = invoiceService.calculateFare(distance, time);
+        double fare = invoiceService.calculateFare(RideCategories.NORMAL_RIDE,distance, time);
         Assert.assertEquals(25, fare, 0.0);
     }
 
@@ -27,7 +27,7 @@ public class CabInvoiceTest {
     public void givenLessDistanceAndTime_ShouldReturnMinFare() {
         double distance = 0.1;
         int time = 1;
-        double fare = invoiceService.calculateFare(distance, time);
+        double fare = invoiceService.calculateFare(RideCategories.NORMAL_RIDE, distance, time);
         Assert.assertEquals(5, fare, 0.0);
     }
 
